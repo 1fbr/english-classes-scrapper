@@ -1,0 +1,12 @@
+{
+  "description": "Notify by email when a class is canceled.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "jsdom": "^20.0.0"
+  }
+}
