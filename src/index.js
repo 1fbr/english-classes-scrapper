@@ -1,6 +1,7 @@
 require('dotenv').config()
-const jsdom = require("jsdom");
+const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+const { notifyByEmail } = require('./emailHandler')
 
 const getData = () => {
       fetch(process.env.URL)
@@ -14,8 +15,8 @@ const checkData = (data) => {
     const tableInfo = document.querySelector('tbody').textContent
     
     tableInfo.includes(process.env.TEACHER_NAME) 
-        ? console.log("Class canceled") 
-        : console.log("No class canceled expected")
+        ? notifyByEmail()
+        : console.log('No class canceled expected')
 }
 
 getData()
