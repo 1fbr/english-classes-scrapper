@@ -19,7 +19,7 @@ jobs:
          echo "TEACHER_NAME=${TEACHER_NAME}" >> .env
          echo "ORGANIZATION_NAME=${ORGANIZATION_NAME}" >> .env
          echo "GMAIL_ACCOUNT=${GMAIL_ACCOUNT}" >> .env
-         echo ACCOUNT_PASSWORD=${ACCOUNT_PASSWORD}" >> .env
+         echo "ACCOUNT_PASSWORD=${ACCOUNT_PASSWORD}" >> .env
          set -a; source .env; set +a;
          npm i
          npm start
