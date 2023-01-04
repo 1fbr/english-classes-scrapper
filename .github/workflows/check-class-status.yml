@@ -14,12 +14,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: |
-         echo "URL=${URL}" > .env
-         echo "TEACHER_NAME=${TEACHER_NAME}" >> .env
-         echo "ORGANIZATION_NAME=${ORGANIZATION_NAME}" >> .env
-         echo "GMAIL_ACCOUNT=${GMAIL_ACCOUNT}" >> .env
-         echo "ACCOUNT_PASSWORD=${ACCOUNT_PASSWORD}" >> .env
-         set -a; source .env; set +a;
-         npm i
-         npm start
+      - name: Set env vars
+        run: |
+          echo "URL=${URL}" > .env
+          echo "TEACHER_NAME=${TEACHER_NAME}" >> .env
+          echo "ORGANIZATION_NAME=${ORGANIZATION_NAME}" >> .env
+          echo "GMAIL_ACCOUNT=${GMAIL_ACCOUNT}" >> .env
+          echo "ACCOUNT_PASSWORD=${ACCOUNT_PASSWORD}" >> .env
+          cat .env  
+      - name: Run the scrapper  
+        run: |
+          set -a; source .env; set +a;
+          npm i
+          npm start
