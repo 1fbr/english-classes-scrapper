@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 import nodemailer from 'nodemailer'
 dotenv.config()
-const { ORGANIZATION_NAME, GMAIL_ACCOUNT, ACCOUNT_PASSWORD, TEACHER_NAME } = process.env
+const { ORGANIZATION_NAME, GMAIL_ACCOUNT, ACCOUNT_PASSWORD, TEACHER_NAME, URL } = process.env
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -19,7 +19,9 @@ export const notifyByEmail = () => {
       from: `${ORGANIZATION_NAME} < ${GMAIL_ACCOUNT}>`,
       to: GMAIL_ACCOUNT,
       subject: 'About the following class',
-      text: `The following class with ${TEACHER_NAME} is expected to be canceled. This is an automated message, could be wrong.`
+      text: `Hi,
+      \nToday's class with ${TEACHER_NAME} is expected to be cancelled.
+      \nThis is an automated message, it could be wrong, please check it on: \n${URL}`
     })
     console.log('Class canceled, email sent.')
   } catch (error) {
